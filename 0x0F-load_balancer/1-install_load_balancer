@@ -11,11 +11,11 @@ apt-get -y install haproxy
 # edit config file
 server_config=\
 "
-frontend  mariacelin.tech_frontend
+frontend  mariacelin_frontend
         bind *:80
         mode http
         default_backend mariacelin_backend 
-backend	maricelin.tech_backend
+backend	maricelin_backend
         balance roundrobin
         server 414104-web-01 52.201.222.70:80 check
         server 414104-web-02 34.239.253.80:80 check
