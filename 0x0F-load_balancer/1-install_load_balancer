@@ -14,11 +14,11 @@ server_config=\
 frontend  mariacelin.tech_frontend
         bind *:80
         mode http
-        default_backend besthor_backend
-backend maricelin.tech_backend
+        default_backend mariacelin_backend 
+backend	maricelin.tech_backend
         balance roundrobin
-        server 176572-web-01 54.165.168.252:80 check
-        server 176572-web-02 34.237.91.136:80 check
+        server 414104-web-01 52.201.222.70:80 check
+        server 414104-web-02 34.239.253.80:80 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
