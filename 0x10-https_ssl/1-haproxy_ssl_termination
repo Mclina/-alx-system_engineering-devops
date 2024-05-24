@@ -33,10 +33,10 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend mariacelin_frontend 
+frontend mariacelin_frontend
         bind *:80
         mode http
-        http-request redirect scheme https code 301 unless { ssl_fc }
+        http-request redirect scheme https if !{ ssl_fc }
         http-request set-header X_Forwarded-Proto http
         default_backend mariacelin_backend
 
@@ -45,7 +45,9 @@ frontend mariacelin_frontend-https
         http-request set-header X-Forwarded-Proto https
         default_backend mariacelin_backend
 
-backend	maricelin_backend
+backend mariacelin.tech_backend
         balance roundrobin
         server 414104-web-01 52.201.222.70:80 check
         server 414104-web-02 34.239.253.80:80 check
+
+
